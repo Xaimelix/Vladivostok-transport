@@ -2,8 +2,8 @@
 Бизнес-логика для поиска маршрутов
 """
 from sqlalchemy.orm import Session
-from data import models, schemas
-from modules import path as path_module
+from app.data import models, schemas
+from app.modules import path as path_module
 from .station_service import get_station_by_name
 
 

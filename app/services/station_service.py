@@ -2,7 +2,7 @@
 Бизнес-логика для работы со станциями
 """
 from sqlalchemy.orm import Session
-from data import models
+from app.data import models
 
 
 def get_all_stations(db: Session) -> list[models.Station]:
