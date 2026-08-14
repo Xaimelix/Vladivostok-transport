@@ -1,0 +1,345 @@
+[
+  {
+    "id": "большой_улисс_(катерная)",
+    "name": "Большой Улисс (Катерная)",
+    "svg_id": "station-marker-23",
+    "lines": [
+      "line-green"
+    ],
+    "x": 492.0,
+    "y": 620.0,
+    "is_transfer": false
+  },
+  {
+    "id": "весенняя",
+    "name": "Весенняя",
+    "svg_id": "station-marker-10",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 107.0,
+    "is_transfer": false
+  },
+  {
+    "id": "владивосток",
+    "name": "Владивосток",
+    "svg_id": "station-node-30",
+    "lines": [
+      "line-green"
+    ],
+    "x": 188.5,
+    "y": 400.0,
+    "is_transfer": false
+  },
+  {
+    "id": "вторая_речка",
+    "name": "Вторая Речка",
+    "svg_id": "station-node-31",
+    "lines": [
+      "line-red",
+      "line-blue"
+    ],
+    "x": 348.5,
+    "y": 254.0,
+    "is_transfer": true
+  },
+  {
+    "id": "диомид",
+    "name": "Диомид",
+    "svg_id": "station-marker-15",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 264.0,
+    "y": 541.0,
+    "is_transfer": false
+  },
+  {
+    "id": "змеинка",
+    "name": "Змеинка",
+    "svg_id": "station-marker-14",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 261.5,
+    "y": 561.0,
+    "is_transfer": false
+  },
+  {
+    "id": "казанский_храм_(эгершельд)",
+    "name": "Казанский храм (Эгершельд)",
+    "svg_id": "station-marker-01",
+    "lines": [
+      "line-red"
+    ],
+    "x": 188.5,
+    "y": 435.0,
+    "is_transfer": false
+  },
+  {
+    "id": "киевская",
+    "name": "Киевская",
+    "svg_id": "station-marker-20",
+    "lines": [
+      "line-green"
+    ],
+    "x": 492.0,
+    "y": 493.0,
+    "is_transfer": false
+  },
+  {
+    "id": "луговая_1",
+    "name": "Луговая-1",
+    "svg_id": "station-node-28",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 444.5,
+    "y": 384.0,
+    "is_transfer": false
+  },
+  {
+    "id": "луговая_2",
+    "name": "Луговая-2",
+    "svg_id": "station-node-27",
+    "lines": [
+      "line-green"
+    ],
+    "x": 428.5,
+    "y": 400.0,
+    "is_transfer": false
+  },
+  {
+    "id": "малый_улисс",
+    "name": "Малый Улисс",
+    "svg_id": "station-marker-22",
+    "lines": [
+      "line-green"
+    ],
+    "x": 492.0,
+    "y": 569.0,
+    "is_transfer": false
+  },
+  {
+    "id": "мальцевская",
+    "name": "Мальцевская",
+    "svg_id": "station-marker-18",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 384.5,
+    "y": 491.5,
+    "is_transfer": false
+  },
+  {
+    "id": "моргородок",
+    "name": "Моргородок",
+    "svg_id": "station-node-29",
+    "lines": [
+      "line-red",
+      "line-blue"
+    ],
+    "x": 348.5,
+    "y": 310.0,
+    "is_transfer": true
+  },
+  {
+    "id": "мыс_артур",
+    "name": "Мыс Артур",
+    "svg_id": "station-marker-26",
+    "lines": [
+      "line-green"
+    ],
+    "x": 489.5,
+    "y": 663.0,
+    "is_transfer": false
+  },
+  {
+    "id": "мыс_кунгасный",
+    "name": "Мыс Кунгасный",
+    "svg_id": "station-marker-02",
+    "lines": [
+      "line-red"
+    ],
+    "x": 186.0,
+    "y": 379.0,
+    "is_transfer": false
+  },
+  {
+    "id": "мыс_речной_(заря)",
+    "name": "Мыс Речной (Заря)",
+    "svg_id": "station-marker-03",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 222.0,
+    "is_transfer": false
+  },
+  {
+    "id": "мыс_чуркин",
+    "name": "Мыс Чуркин",
+    "svg_id": "station-marker-17",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 326.5,
+    "y": 491.5,
+    "is_transfer": false
+  },
+  {
+    "id": "набережная",
+    "name": "Набережная",
+    "svg_id": "station-marker-25",
+    "lines": [
+      "line-green"
+    ],
+    "x": 250.5,
+    "y": 397.5,
+    "is_transfer": false
+  },
+  {
+    "id": "набережная_цесаревича",
+    "name": "Набережная Цесаревича",
+    "svg_id": "station-marker-24",
+    "lines": [
+      "line-green"
+    ],
+    "x": 317.5,
+    "y": 397.5,
+    "is_transfer": false
+  },
+  {
+    "id": "окатовая",
+    "name": "Окатовая",
+    "svg_id": "station-marker-21",
+    "lines": [
+      "line-green"
+    ],
+    "x": 492.0,
+    "y": 530.0,
+    "is_transfer": false
+  },
+  {
+    "id": "океанская",
+    "name": "Океанская",
+    "svg_id": "station-marker-07",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 155.0,
+    "is_transfer": false
+  },
+  {
+    "id": "первая_речка",
+    "name": "Первая Речка",
+    "svg_id": "station-marker-12",
+    "lines": [
+      "line-red"
+    ],
+    "x": 271.5,
+    "y": 330.5,
+    "is_transfer": false
+  },
+  {
+    "id": "рыбный_порт",
+    "name": "Рыбный порт",
+    "svg_id": "station-marker-16",
+    "lines": [
+      "line-blue"
+    ],
+    "x": 264.0,
+    "y": 521.0,
+    "is_transfer": false
+  },
+  {
+    "id": "садгород",
+    "name": "Садгород",
+    "svg_id": "station-marker-09",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 123.0,
+    "is_transfer": false
+  },
+  {
+    "id": "санаторная",
+    "name": "Санаторная",
+    "svg_id": "station-marker-06",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 171.0,
+    "is_transfer": false
+  },
+  {
+    "id": "седанка",
+    "name": "Седанка",
+    "svg_id": "station-marker-05",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 187.0,
+    "is_transfer": false
+  },
+  {
+    "id": "спутник",
+    "name": "Спутник",
+    "svg_id": "station-marker-08",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 139.0,
+    "is_transfer": false
+  },
+  {
+    "id": "стадион_динамо_(семеновская)",
+    "name": "Стадион Динамо (Семёновская)",
+    "svg_id": "station-marker-11",
+    "lines": [
+      "line-red"
+    ],
+    "x": 186.0,
+    "y": 357.0,
+    "is_transfer": false
+  },
+  {
+    "id": "угольная",
+    "name": "Угольная",
+    "svg_id": "station-marker-13",
+    "lines": [
+      "line-red"
+    ],
+    "x": 348.5,
+    "y": 91.0,
+    "is_transfer": false
+  },
+  {
+    "id": "чайка",
+    "name": "Чайка",
+    "svg_id": "station-marker-04",
+    "lines": [
+      "line-red"
+    ],
+    "x": 351.0,
+    "y": 203.0,
+    "is_transfer": false
+  },
+  {
+    "id": "экипажная",
+    "name": "Экипажная",
+    "svg_id": "station-marker-19",
+    "lines": [
+      "line-green"
+    ],
+    "x": 381.5,
+    "y": 397.5,
+    "is_transfer": false
+  }
+]

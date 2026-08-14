@@ -1,0 +1,207 @@
+{
+  "source": "Vladivostok-metro-map.svg",
+  "lines": {
+    "line-red": {
+      "color": "#F24822"
+    },
+    "line-blue": {
+      "color": "#3DADFF"
+    },
+    "line-green": {
+      "color": "#14EF10"
+    }
+  },
+  "stations": [
+    {
+      "svg_id": "station-marker-01",
+      "kind": "marker",
+      "line_color": "#f24822",
+      "position": {
+        "x": 348.5,
+        "y": 91.0
+      },
+      "name": "Угольная"
+    },
+    {
+      "svg_id": "station-marker-02",
+      "kind": "marker",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 261.5,
+        "y": 561.0
+      },
+      "name": "Змеинка"
+    },
+    {
+      "svg_id": "station-marker-03",
+      "kind": "marker",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 264.0,
+        "y": 541.0
+      },
+      "name": "Диомид"
+    },
+    {
+      "svg_id": "station-marker-04",
+      "kind": "marker",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 264.0,
+        "y": 521.0
+      },
+      "name": "Рыбный порт"
+    },
+    {
+      "svg_id": "station-marker-05",
+      "kind": "marker",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 326.5,
+        "y": 491.5
+      },
+      "name": "Мыс Чуркин"
+    },
+    {
+      "svg_id": "station-marker-06",
+      "kind": "marker",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 384.5,
+        "y": 491.5
+      },
+      "name": "Мальцевская"
+    },
+    {
+      "svg_id": "station-marker-07",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 381.5,
+        "y": 397.5
+      },
+      "name": "Экипажная"
+    },
+    {
+      "svg_id": "station-marker-08",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 492.0,
+        "y": 493.0
+      },
+      "name": "Киевская"
+    },
+    {
+      "svg_id": "station-marker-09",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 492.0,
+        "y": 530.0
+      },
+      "name": "Окатовая"
+    },
+    {
+      "svg_id": "station-marker-10",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 492.0,
+        "y": 569.0
+      },
+      "name": "Малый Улисс"
+    },
+    {
+      "svg_id": "station-marker-11",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 492.0,
+        "y": 620.0
+      },
+      "name": "Большой Улисс (Катерная)"
+    },
+    {
+      "svg_id": "station-marker-12",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 317.5,
+        "y": 397.5
+      },
+      "name": "Набережная Цесаревича"
+    },
+    {
+      "svg_id": "station-marker-13",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 250.5,
+        "y": 397.5
+      },
+      "name": "Набережная"
+    },
+    {
+      "svg_id": "station-marker-14",
+      "kind": "marker",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 489.5,
+        "y": 663.0
+      },
+      "name": "Мыс Артур"
+    },
+    {
+      "svg_id": "station-node-15",
+      "kind": "node",
+      "line_color": "#14ef10",
+      "position": {
+        "x": 428.5,
+        "y": 400.0
+      },
+      "name": "Вторая Речка"
+    },
+    {
+      "svg_id": "station-node-16",
+      "kind": "node",
+      "line_color": "#3dadff",
+      "position": {
+        "x": 444.5,
+        "y": 384.0
+      },
+      "name": "Луговая-1"
+    },
+    {
+      "svg_id": "station-node-17",
+      "kind": "node",
+      "line_color": "url(#paint0_linear_0_1)",
+      "position": {
+        "x": 348.5,
+        "y": 310.0
+      },
+      "name": "Моргородок"
+    },
+    {
+      "svg_id": "station-node-18",
+      "kind": "node",
+      "line_color": "url(#paint1_linear_0_1)",
+      "position": {
+        "x": 188.5,
+        "y": 400.0
+      },
+      "name": "Владивосток"
+    },
+    {
+      "svg_id": "station-node-19",
+      "kind": "node",
+      "line_color": "url(#paint2_linear_0_1)",
+      "position": {
+        "x": 348.5,
+        "y": 254.0
+      },
+      "name": "Луговая-2"
+    }
+  ],
+  "note": "SVG IDs are visual hooks. Transport graph/database IDs should remain independent."
+}
