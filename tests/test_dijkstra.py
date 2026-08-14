@@ -1,7 +1,14 @@
 """
 Тесты для алгоритма Дейкстры
 """
-from app.modules.path import dijkstra
+import pytest
+import sys
+from pathlib import Path
+
+# Добавляем app в путь импорта
+sys.path.insert(0, str(Path(__file__).parent.parent / "app"))
+
+from modules.path import dijkstra
 
 
 class TestDijkstra:

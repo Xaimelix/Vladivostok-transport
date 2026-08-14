@@ -1,64 +1,69 @@
 ```
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
+*.py[cod]
+*$py.class
+*.so
 .Python
-env/
-venv/
-.venv/
-.ENV
-.python-version
-
-# Database
-*.sqlite3
-*.db
-
-# Alembic
-alembic/versions/*.pyc
-alembic/__pycache__/
-
-# Dependencies
-*.egg-info/
-.eggs/
-.build/
+build/
 develop-eggs/
-.installed.cfg
+dist/
+downloads/
+eggs/
+.eggs/
 lib/
 lib64/
 parts/
 sdist/
 var/
 wheels/
+*.egg-info/
+.installed.cfg
 *.egg
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+.env/
+
+# Database
+*.sqlite
+*.sqlite3
+.dynamodb/
+
+# Logs
+*.log
+
+# Coverage
 .coverage
+htmlcov/
 .coverage.*
 .cache
 nosetests.xml
 coverage.xml
 *.cover
-*.log
-.gitattributes
-.pytest_cache/
-.mypy_cache/
 .hypothesis/
+.pytest_cache/
 
-# Environment variables
+# Environment
 .env
 .env.local
 .env.*
-!.env.example
+
+# Alembic
+alembic/versions/*.py
+migrations/alembic/versions/*.py
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
+*.tmp
+
+# OS
 .DS_Store
 Thumbs.db
 ```
