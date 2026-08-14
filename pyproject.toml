@@ -1,5 +1,5 @@
 [project]
-name = "train-project-2"
+name = "train-project"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
@@ -9,4 +9,5 @@ dependencies = [
     "jinja2>=3.1.6",
     "sqlalchemy>=2.0.52",
     "uvicorn>=0.52.2",
+    "alembic>=1.16.0",
 ]

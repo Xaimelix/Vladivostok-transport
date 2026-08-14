@@ -2,9 +2,10 @@
 Бизнес-логика для поиска маршрутов
 """
 from sqlalchemy.orm import Session
-from data import models, schemas
-from modules import path as path_module
-from .station_service import get_station_by_name
+from app.models import Edge, Route
+from app.models.schemas import RouteOut
+from app.services.dijkstra import dijkstra
+from .transport import get_station_by_name
 
 
 def build_graph_from_edges(db: Session) -> dict[int, list[tuple[float, int]]]:
@@ -15,7 +16,7 @@ def build_graph_from_edges(db: Session) -> dict[int, list[tuple[float, int]]]:
         dict: {station_id: [(weight, neighbor_station_id), ...], ...}
     """
     graph = {}
-    edges = db.query(models.Edge).all()
+    edges = db.query(Edge).all()
     for e in edges:
         graph.setdefault(e.station_a_id, []).append((e.weight, e.station_b_id))
         graph.setdefault(e.station_b_id, []).append((e.weight, e.station_a_id))
@@ -26,7 +27,7 @@ def find_shortest_route(
     db: Session, 
     start_name: str, 
     end_name: str
-) -> schemas.RouteOut:
+) -> RouteOut:
     """
     Найти кратчайший маршрут между двумя станциями.
     
@@ -60,7 +61,7 @@ def find_shortest_route(
         raise ValueError(f"Станция '{end_name}' не подключена к сети")
     
     # Найти кратчайший путь методом Dijkstra
-    visited = path_module.dijkstra(s_start.id, s_end.id, graph)
+    visited = dijkstra(s_start.id, s_end.id, graph)
     
     # Восстановить маршрут
     route = []
@@ -71,4 +72,4 @@ def find_shortest_route(
     
     route.reverse()
     
-    return schemas.RouteOut(route=route, lines=[])
+    return RouteOut(route=route, lines=[])
