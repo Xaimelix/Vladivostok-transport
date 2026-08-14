@@ -1,4 +1,6 @@
-# FastAPI Site Template
+# Vladivostok Transport Project
+
+aka Train project 2
 
 Базовый шаблон сайта на FastAPI с HTML-шаблонами (Jinja2) и статикой.
 

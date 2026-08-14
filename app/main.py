@@ -17,7 +17,7 @@ app = FastAPI(title="Train-project API")
 init_db()
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="FastAPI Site Template")
+    app = FastAPI(title="Vladivostok Transport API")
 
     app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
     app.include_router(pages_router)
