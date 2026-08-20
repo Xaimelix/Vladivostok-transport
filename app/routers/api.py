@@ -1,36 +1,24 @@
 """
-API маршруты
+API маршруты (заглушка для демонстрации)
 """
-from fastapi import APIRouter, HTTPException, Depends
-from sqlalchemy.orm import Session
-from typing import List
-
-from app.data.database import get_db
-from app.data import schemas
-from app.services import station_service, route_service
-
+from fastapi import APIRouter
 
 router = APIRouter(prefix="/api", tags=["api"])
 
 
-@router.get("/stations", response_model=List[schemas.StationOut])
-def get_stations(db: Session = Depends(get_db)):
-    """Получить список всех станций"""
-    return station_service.get_all_stations(db)
+@router.get("/stations")
+def get_stations():
+    """Получить список всех станций - заглушка"""
+    return []
 
 
-@router.post("/route", response_model=schemas.RouteOut)
-def find_route(req: schemas.RouteRequest, db: Session = Depends(get_db)):
+@router.post("/route")
+def find_route():
     """
-    Найти кратчайший маршрут между двумя станциями.
+    Найти кратчайший маршрут между двумя станциями - заглушка.
     
     Требуемые параметры:
     - start: название начальной станции
     - end: название конечной станции
     """
-    try:
-        return route_service.find_shortest_route(db, req.start, req.end)
-    except ValueError as e:
-        raise HTTPException(status_code=400, detail=str(e))
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Ошибка поиска маршрута: {str(e)}")
+    return {"message": "Маршрут будет реализован в будущем"}

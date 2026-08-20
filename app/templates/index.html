@@ -1,12 +1,243 @@
 {% extends "base.html" %}
 
-{% block title %}{{ title }} | FastAPI Site{% endblock %}
+{% block title %}{{ title }} | Карта транспорта{% endblock %}
 
 {% block content %}
-<section class="hero">
-    <h1>Шаблон сайта на FastAPI</h1>
-    <p>
-        Проект готов к развитию: добавляйте роуты, страницы, API и бизнес-логику.
-    </p>
-</section>
+<div class="map-page-container">
+    <!-- Левая панель с выбором станций -->
+    <aside class="route-panel">
+        <h2>Построение маршрута</h2>
+        
+        <div class="route-points">
+            <div class="route-point">
+                <span class="point-label origin-label">Начало:</span>
+                <span id="origin-station" class="point-value">Не выбрана</span>
+            </div>
+            
+            <div class="route-point">
+                <span class="point-label destination-label">Конец:</span>
+                <span id="destination-station" class="point-value">Не выбрана</span>
+            </div>
+        </div>
+        
+        <div class="route-instructions">
+            <p>1. Кликните на станцию, чтобы выбрать начальную точку</p>
+            <p>2. Кликните на другую станцию, чтобы выбрать конечную точку</p>
+            <p>3. Для сброса кликните на начальную станцию снова</p>
+        </div>
+    </aside>
+    
+    <!-- Основная область с картой -->
+    <main class="map-container">
+        <!-- HTML карта (контейнер для интерактивности) -->
+        <div class="html-map-wrapper">
+            <svg id="transport-map" class="transport-map" xmlns="http://www.w3.org/2000/svg" viewBox="100 80 470 600" preserveAspectRatio="xMidYMid meet">
+                <style>
+                    @import url("/static/css/map-styles.css");
+                    
+                    /* Legacy support - old class names */
+                    .transport-line.is-dimmed { opacity: .22; }
+                    .transport-line.is-route { stroke-width: 7 !important; }
+                    .station-marker.is-dimmed, .station-node.is-dimmed { opacity: .22; }
+                    .station-marker.is-route, .station-node.is-route { opacity: 1; }
+                    .station-node.is-origin, .station-node.is-destination { stroke-width: 4 !important; }
+                </style>
+                
+                <!-- Фон карты -->
+                <rect x="100" y="80" width="470" height="600" fill="white" rx="8" />
+                
+                <!-- Линии транспорта -->
+                <path d="M188.5 400H465.5C478.755 400 489.5 410.745 489.5 424V663" 
+                      stroke="#14EF10" stroke-width="4" stroke-linecap="round" 
+                      id="line-green" class="transport-line" />
+                
+                <path d="M348.5 254C340.216 254 333.5 260.716 333.5 269V286C333.5 299.255 344.245 310 357.5 310H420.5C433.755 310 444.5 320.745 444.5 334V465C444.5 478.255 433.755 489 420.5 489H285.5C272.245 489 261.5 499.745 261.5 513V561" 
+                      stroke="#3DADFF" stroke-width="4" stroke-linecap="round" 
+                      id="line-blue" class="transport-line" />
+                
+                <path d="M188.5 435V358C188.5 344.745 199.245 334 212.5 334H324.5C337.755 334 348.5 323.255 348.5 310V91" 
+                      stroke="#F24822" stroke-width="4" stroke-linecap="round" 
+                      id="line-red" class="transport-line" />
+                
+                <!-- Станции красной линии -->
+                <rect x="341.5" y="89" width="14" height="4" fill="#F24822" 
+                      id="station-marker-13" class="station-marker" data-name="Станция 13" />
+                <path d="M181.5 433H195.5V437H181.5V433Z" fill="#F24822" 
+                      id="station-marker-01" class="station-marker" data-name="Станция 01" />
+                <path d="M181.5 377H190.5V381H181.5V377Z" fill="#F24822" 
+                      id="station-marker-02" class="station-marker" data-name="Станция 02" />
+                <path d="M346.5 220H355.5V224H346.5V220Z" fill="#F24822" 
+                      id="station-marker-03" class="station-marker" data-name="Станция 03" />
+                <path d="M346.5 201H355.5V205H346.5V201Z" fill="#F24822" 
+                      id="station-marker-04" class="station-marker" data-name="Станция 04" />
+                <path d="M346.5 185H355.5V189H346.5V185Z" fill="#F24822" 
+                      id="station-marker-05" class="station-marker" data-name="Станция 05" />
+                <path d="M346.5 169H355.5V173H346.5V169Z" fill="#F24822" 
+                      id="station-marker-06" class="station-marker" data-name="Станция 06" />
+                <path d="M346.5 153H355.5V157H346.5V153Z" fill="#F24822" 
+                      id="station-marker-07" class="station-marker" data-name="Станция 07" />
+                <path d="M346.5 137H355.5V141H346.5V137Z" fill="#F24822" 
+                      id="station-marker-08" class="station-marker" data-name="Станция 08" />
+                <path d="M346.5 121H355.5V125H346.5V121Z" fill="#F24822" 
+                      id="station-marker-09" class="station-marker" data-name="Станция 09" />
+                <path d="M346.5 105H355.5V109H346.5V105Z" fill="#F24822" 
+                      id="station-marker-10" class="station-marker" data-name="Станция 10" />
+                <path d="M181.5 355H190.5V359H181.5V355Z" fill="#F24822" 
+                      id="station-marker-11" class="station-marker" data-name="Станция 11" />
+                <path d="M269.5 326H273.5V335H269.5V326Z" fill="#F24822" 
+                      id="station-marker-12" class="station-marker" data-name="Станция 12" />
+                
+                <!-- Станции синей линии -->
+                <rect x="254.5" y="559" width="14" height="4" fill="#3DADFF" 
+                      id="station-marker-14" class="station-marker" data-name="Станция 14" />
+                <rect x="259.5" y="539" width="9" height="4" fill="#3DADFF" 
+                      id="station-marker-15" class="station-marker" data-name="Станция 15" />
+                <rect x="259.5" y="519" width="9" height="4" fill="#3DADFF" 
+                      id="station-marker-16" class="station-marker" data-name="Станция 16" />
+                <rect x="324.5" y="487" width="4" height="9" fill="#3DADFF" 
+                      id="station-marker-17" class="station-marker" data-name="Станция 17" />
+                <rect x="382.5" y="487" width="4" height="9" fill="#3DADFF" 
+                      id="station-marker-18" class="station-marker" data-name="Станция 18" />
+                
+                <!-- Станции зеленой линии -->
+                <rect x="379.5" y="393" width="4" height="9" fill="#14EF10" 
+                      id="station-marker-19" class="station-marker" data-name="Станция 19" />
+                <rect x="487.5" y="491" width="9" height="4" fill="#14EF10" 
+                      id="station-marker-20" class="station-marker" data-name="Станция 20" />
+                <rect x="487.5" y="528" width="9" height="4" fill="#14EF10" 
+                      id="station-marker-21" class="station-marker" data-name="Станция 21" />
+                <rect x="487.5" y="567" width="9" height="4" fill="#14EF10" 
+                      id="station-marker-22" class="station-marker" data-name="Станция 22" />
+                <rect x="487.5" y="618" width="9" height="4" fill="#14EF10" 
+                      id="station-marker-23" class="station-marker" data-name="Станция 23" />
+                <rect x="315.5" y="393" width="4" height="9" fill="#14EF10" 
+                      id="station-marker-24" class="station-marker" data-name="Станция 24" />
+                <rect x="248.5" y="393" width="4" height="9" fill="#14EF10" 
+                      id="station-marker-25" class="station-marker" data-name="Станция 25" />
+                <rect x="482.5" y="661" width="14" height="4" fill="#14EF10" 
+                      id="station-marker-26" class="station-marker" data-name="Станция 26" />
+                
+                <!-- Пересадочные узлы (круглые станции) -->
+                <circle cx="428.5" cy="400" r="5.5" fill="white" stroke="#14EF10" stroke-width="3" 
+                        id="station-node-27" class="station-node" data-name="Пересадка 27" />
+                <circle cx="444.5" cy="384" r="5.5" fill="white" stroke="#3DADFF" stroke-width="3" 
+                        id="station-node-28" class="station-node" data-name="Пересадка 28" />
+                <circle cx="348.5" cy="310" r="6.5" fill="white" stroke="#F24822" stroke-width="3" 
+                        id="station-node-29" class="station-node" data-name="Пересадка 29" />
+                <circle cx="188.5" cy="400" r="6.5" fill="white" stroke="#F24822" stroke-width="3" 
+                        id="station-node-30" class="station-node" data-name="Пересадка 30" />
+                <circle cx="348.5" cy="254" r="6.5" fill="white" stroke="#F24822" stroke-width="3" 
+                        id="station-node-31" class="station-node" data-name="Пересадка 31" />
+            </svg>
+        </div>
+    </main>
+</div>
+
+<style>
+.map-page-container {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem 0;
+    min-height: calc(100vh - 200px);
+}
+
+.route-panel {
+    flex: 0 0 280px;
+    background: var(--surface);
+    border: 1px solid #e7ecf4;
+    border-radius: 14px;
+    padding: 1.5rem;
+    height: fit-content;
+}
+
+.route-panel h2 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--text);
+}
+
+.route-points {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.route-point {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    background: var(--bg);
+    border-radius: 8px;
+}
+
+.point-label {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.origin-label {
+    color: #22c55e;
+}
+
+.destination-label {
+    color: #ef4444;
+}
+
+.point-value {
+    font-size: 1.1rem;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.route-instructions {
+    background: var(--bg);
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.route-instructions p {
+    margin: 0.5rem 0;
+}
+
+.map-container {
+    flex: 1;
+    background: var(--surface);
+    border: 1px solid #e7ecf4;
+    border-radius: 14px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.html-map-wrapper {
+    width: 100%;
+    max-width: 600px;
+}
+
+.transport-map {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .map-page-container {
+        flex-direction: column;
+    }
+    
+    .route-panel {
+        flex: none;
+        width: 100%;
+    }
+}
+</style>
+
+<script src="{{ url_for('static', path='js/map-interaction.js') }}"></script>
 {% endblock %}
