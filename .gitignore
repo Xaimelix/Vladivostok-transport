@@ -12,6 +12,14 @@ node_modules/
 *.log
 *.tmp
 *.swp
+# Database
+*.sqlite3
+
+# Dependencies
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
 
 # Environment
 .env
@@ -19,6 +27,20 @@ node_modules/
 *.env.*
 
 # Editors
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.swp
+*.swo
+
+# Coverage reports
+.coverage
+coverage/
+htmlcov/
+
+# IDE
 .vscode/
 .idea/
 

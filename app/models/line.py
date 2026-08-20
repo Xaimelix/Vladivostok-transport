@@ -1,5 +1,6 @@
 """Модель линии."""
-from sqlalchemy import Column, Integer, String, Text
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.orm import relationship
 from app.data.database import Base
 
 
@@ -9,4 +10,6 @@ class Line(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, nullable=False)
     color = Column(String, nullable=True)
-    points = Column(Text, nullable=True)  # JSON или координаты
+    
+    # Связь со станциями (many-to-many)
+    stations = relationship("Station", secondary="station_lines", back_populates="lines")

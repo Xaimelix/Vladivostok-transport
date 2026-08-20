@@ -1,6 +1,6 @@
 """Модели данных для транспортного приложения."""
-from .station import Station
+from .station import Station, station_lines
 from .line import Line
-from .route import Route, Edge
+from .route import Connection
 
-__all__ = ["Station", "Line", "Route", "Edge"]
+__all__ = ["Station", "station_lines", "Line", "Connection"]
