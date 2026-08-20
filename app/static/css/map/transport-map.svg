@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="622" height="771" viewBox="0 0 622 771" fill="none">
 <style>
-.transport-line { transition: opacity .25s ease, stroke-width .25s ease; }
-.station-marker, .station-node { transition: opacity .2s ease, transform .2s ease; transform-box: fill-box; transform-origin: center; }
-.transport-line.is-dimmed, .station-marker.is-dimmed, .station-node.is-dimmed { opacity: .22; }
+@import url("map-styles.css");
+
+/* Legacy support - old class names */
+.transport-line.is-dimmed { opacity: .22; }
 .transport-line.is-route { stroke-width: 7 !important; }
+.station-marker.is-dimmed, .station-node.is-dimmed { opacity: .22; }
 .station-marker.is-route, .station-node.is-route { opacity: 1; }
 .station-node.is-origin, .station-node.is-destination { stroke-width: 4 !important; }
 </style><path d="M75.5 89C75.5 82.3726 80.8726 77 87.5 77H569.5C576.127 77 581.5 82.3726 581.5 89V674C581.5 680.627 576.127 686 569.5 686H87.5C80.8726 686 75.5 680.627 75.5 674V89Z" fill="white" />
