@@ -7,13 +7,29 @@ document.addEventListener('DOMContentLoaded', function() {
     // Состояние приложения
     const state = {
         origin: null,      // Начальная точка маршрута
-        destination: null  // Конечная точка маршрута
+        destination: null,  // Конечная точка маршрута
+        stationsData: []    // Данные из stations.json
     };
 
     // DOM элементы
     const originElement = document.getElementById('origin-station');
     const destinationElement = document.getElementById('destination-station');
     const svgMap = document.getElementById('transport-map');
+
+    /**
+     * Найти информацию о станции в stations.json по svg_id
+     */
+    function findStationData(svgId) {
+        return state.stationsData.find(s => s.svg_id === svgId);
+    }
+
+    /**
+     * Получить отображаемое имя станции
+     */
+    function getStationName(svgId) {
+        const data = findStationData(svgId);
+        return data ? data.name : svgId;
+    }
 
     /**
      * Очистить все классы состояния у элемента
@@ -30,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function updateOriginDisplay() {
         if (originElement && state.origin) {
-            originElement.textContent = state.origin.name || state.origin.id;
+            originElement.textContent = getStationName(state.origin.id);
         } else if (originElement) {
             originElement.textContent = 'Не выбрана';
         }
@@ -41,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
      */
     function updateDestinationDisplay() {
         if (destinationElement && state.destination) {
-            destinationElement.textContent = state.destination.name || state.destination.id;
+            destinationElement.textContent = getStationName(state.destination.id);
         } else if (destinationElement) {
             destinationElement.textContent = 'Не выбрана';
         }
@@ -69,12 +85,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Получить идентификатор станции
         const stationId = station.id;
-        const stationName = station.getAttribute('data-name') || stationId;
 
         // Логика выбора станций
         if (!state.origin) {
             // Выбор начальной точки
-            state.origin = { id: stationId, name: stationName };
+            state.origin = { id: stationId };
             
             // Установить состояние origin
             clearStationStates(station);
@@ -97,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Выбор конечной точки
-            state.destination = { id: stationId, name: stationName };
+            state.destination = { id: stationId };
             
             // Установить состояние destination
             clearStationStates(station);
@@ -126,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             
             // Установить новую начальную точку
-            state.origin = { id: stationId, name: stationName };
+            state.origin = { id: stationId };
             clearStationStates(station);
             station.classList.add('origin', 'selected');
             
@@ -189,7 +204,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Инициализация при загрузке страницы
+    /**
+     * Загрузить данные станций из stations.json
+     */
+    function loadStationsData() {
+        fetch('/static/css/stations.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                return response.json();
+            })
+            .then(stations => {
+                state.stationsData = stations;
+                console.log('Данные станций загружены:', stations.length, 'станций');
+            })
+            .catch(err => {
+                console.warn('Не удалось загрузить stations.json:', err);
+            });
+    }
+
+    // Инициализация
+    loadStationsData();
     initializeStations();
     
     // Инициализация отображения
