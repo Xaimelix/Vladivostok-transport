@@ -153,11 +153,7 @@
    КОМБИНИРОВАННЫЕ СОСТОЯНИЯ
    -------------------------------------------- */
 
-/* Приоритет состояний для станций */
-.station-marker.closed,
-.station-node.closed {
-    /* Закрытое состояние всегда поверх других */
-}
+/* Приоритет состояний для станций — см. правила `.station-marker.closed/.station-node.closed` выше */
 
 .station-marker.origin.selected,
 .station-node.origin.selected {
