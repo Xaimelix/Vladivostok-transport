@@ -8,4 +8,5 @@ class Line(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, nullable=False)
+    color = Column(String, nullable=True)
     points = Column(Text, nullable=True)  # JSON или координаты

@@ -1,69 +1,43 @@
 ```
-# Python
+# Compiled and build artifacts
+*.pyc
 __pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
 
-# Virtual environments
-venv/
-ENV/
-env/
+# Dependencies
 .venv/
-.env/
+venv/
+node_modules/
 
-# Database
-*.sqlite
-*.sqlite3
-.dynamodb/
-
-# Logs
+# Logs and temp files
 *.log
-
-# Coverage
-.coverage
-htmlcov/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
+*.tmp
+*.swp
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Alembic
-alembic/versions/*.py
-migrations/alembic/versions/*.py
-
-# IDE
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-*.tmp
 
-# OS
-.DS_Store
-Thumbs.db
+# Distribution/Build directories
+dist/
+build/
+target/
+
+# Python specific
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+
+# Cache directories
+.mypy_cache/
+.pytest_cache/
+.coverage
+coverage/
+htmlcov/
 ```
